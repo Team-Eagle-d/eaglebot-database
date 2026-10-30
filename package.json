@@ -1,0 +1,32 @@
+{
+  "name": "@eaglebot/database",
+  "version": "0.1.0",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "bun eslint .",
+    "format": "bun eslint . --fix",
+    "typecheck": "bun tsc --noEmit --project ./tsconfig.build.json"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@suil0304/suil-lints": "https://github.com/suil0304/suil-lints/releases/download/v0.2.2/suil0304-suil-lints-0.2.2.tgz",
+    "@types/bun": "latest",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "eslint": "^10.13.0",
+    "typescript-eslint": "^8.72.1"
+  },
+  "peerDependencies": {
+    "typescript": "npm:@typescript/typescript6@^6.0.2"
+  },
+  "dependencies": {
+    "kysely": "^0.29.7",
+    "kysely-postgres-js": "^5.0.1",
+    "postgres": "^3.4.9"
+  }
+}
