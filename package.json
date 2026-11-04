@@ -8,9 +8,9 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "lint": "bun eslint .",
-    "format": "bun eslint . --fix",
-    "typecheck": "bun tsc --noEmit --project ./tsconfig.build.json"
+    "lint": "bun x --bun eslint .",
+    "format": "bun x --bun eslint . --fix",
+    "typecheck": "tsc --noEmit --project ./tsconfig.build.json"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
