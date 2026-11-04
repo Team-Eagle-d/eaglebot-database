@@ -7,6 +7,12 @@
   "exports": {
     ".": "./src/index.ts"
   },
+  "files": [
+    "package.json",
+    "README.md",
+    "tsconfig.json",
+    "src"
+  ],
   "scripts": {
     "lint": "bun x --bun eslint .",
     "format": "bun x --bun eslint . --fix",
