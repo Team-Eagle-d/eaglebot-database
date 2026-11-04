@@ -1,0 +1,31 @@
+name: CI & CD
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+    
+jobs:
+  ci:
+    if: github.event.pull_request.merged == true
+    uses: Team-Eagle-d/eaglebot-workflows/.github/workflows/ci-with-bun.yml@v1
+    with:
+      bun-version: latest
+      package-source-type: pure-typescript
+      do-build: true
+      artifact-name: artifact
+
+  cd:
+    permissions:
+      contents: write
+    needs: ci
+    uses: Team-Eagle-d/eaglebot-workflows/.github/workflows/cd.yml@v1
+    with:
+      artifact-name: artifact
+      artifact-repository: ${{ github.repository }}
+      artifact-run-id: ${{ github.run_id }}
+      release-type: github
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}

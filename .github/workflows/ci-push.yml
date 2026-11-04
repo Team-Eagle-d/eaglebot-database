@@ -1,0 +1,12 @@
+name: CI (push)
+
+on:
+  push:
+    
+jobs:
+  ci:
+    uses: Team-Eagle-d/eaglebot-workflows/.github/workflows/ci-with-bun.yml@v1
+    with:
+      bun-version: latest
+      package-source-type: pure-typescript
+      do-build: false
