@@ -10,7 +10,7 @@ on:
 jobs:
   ci:
     if: github.event.pull_request.merged == true
-    uses: Team-Eagle-d/eaglebot-workflows/.github/workflows/ci-with-bun.yml@v1
+    uses: Team-Eagle-d/eaglebot-workflows/.github/workflows/ci-with-bun.yml@v1.0.1
     with:
       bun-version: latest
       package-source-type: pure-typescript
@@ -21,7 +21,7 @@ jobs:
     permissions:
       contents: write
     needs: ci
-    uses: Team-Eagle-d/eaglebot-workflows/.github/workflows/cd.yml@v1
+    uses: Team-Eagle-d/eaglebot-workflows/.github/workflows/cd.yml@v1.0.1
     with:
       artifact-name: artifact
       artifact-repository: ${{ github.repository }}

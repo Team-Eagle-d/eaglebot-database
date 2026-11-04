@@ -5,7 +5,7 @@ on:
     
 jobs:
   ci:
-    uses: Team-Eagle-d/eaglebot-workflows/.github/workflows/ci-with-bun.yml@v1
+    uses: Team-Eagle-d/eaglebot-workflows/.github/workflows/ci-with-bun.yml@v1.0.1
     with:
       bun-version: latest
       package-source-type: pure-typescript
