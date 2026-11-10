@@ -11,24 +11,47 @@
     "package.json",
     "README.md",
     "tsconfig.json",
+    "kysely.config.ts",
     "src"
   ],
   "scripts": {
     "lint": "bun x --bun eslint .",
     "format": "bun x --bun eslint . --fix",
-    "typecheck": "tsc --noEmit --project ./tsconfig.build.json"
+    "typecheck": "tsc --noEmit --project ./tsconfig.build.json",
+
+    "make": "bun x --bun kysely-ctl migrate:make",
+
+    "migrate:inner": "bun x --bun kysely-ctl migrate:latest --config=./kysely.config.ts",
+    "migrate:outer": "bun x --bun kysely-ctl migrate:latest",
+    "migrate": "bun run migrate:inner && bun run migrate:outer",
+
+    "rollback:inner": "bun x --bun kysely-ctl migrate:rollback --config=./kysely.config.ts",
+    "rollback:outer": "bun x --bun kysely-ctl migrate:rollback",
+    "rollback": "bun run rollback:inner && bun run rollback:outer",
+
+    "up:inner": "bun x --bun kysely-ctl migrate:up --config=./kysely.config.ts",
+    "up:outer": "bun x --bun kysely-ctl migrate:up",
+    "up": "bun run up:inner && bun run up:outer",
+
+    "down:inner": "bun x --bun kysely-ctl migrate:down --config=./kysely.config.ts",
+    "down:outer": "bun x --bun kysely-ctl migrate:down",
+    "down": "bun run down:inner && bun run down:outer",
+
+    "list:inner": "bun x --bun kysely-ctl migrate:list --config=./kysely.config.ts",
+    "list:outer": "bun x --bun kysely-ctl migrate:list"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@suil0304/suil-lints": "https://github.com/suil0304/suil-lints/releases/download/v0.2.2/suil0304-suil-lints-0.2.2.tgz",
     "@types/bun": "latest",
-    "@typescript/native": "npm:typescript@^7.0.2",
+    "@typescript/native": "typescript@^7.0.2",
     "eslint": "^10.13.0",
+    "kysely-ctl": "^0.22.0",
     "typescript-eslint": "^8.72.1"
   },
   "peerDependencies": {
-    "typescript": "npm:@typescript/typescript6@^6.0.2"
+    "typescript": "@typescript/typescript6@^6.0.2"
   },
   "dependencies": {
     "kysely": "^0.29.7",
